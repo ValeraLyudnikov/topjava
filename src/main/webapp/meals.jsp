@@ -14,6 +14,7 @@
     <section>
         <h2><a href="index.html">Home</a></h2>
         <h1>Meal List</h1>
+        <a href="meals?action=create">Add Meal</a>
         <hr/>
         <table border="1" cellpadding="8" cellspacing="0">
             <thead>
@@ -21,18 +22,22 @@
                     <th>Date</th>
                     <th>Description</th>
                     <th>Calories</th>
+                    <th>Upadate</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <c:forEach items="${mealList}" var="meal">
                 <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed" />
                 <tr class="${meal.exceed ? "exceeded" : "normal"}">
                     <td>
-                        <fmt:parseDate value="${meal.dateTime}" pattern="y-M-dd'T'H:m" var="parsedDate" />
-                        <fmt:formatDate value="${parsedDate}" pattern="yyyy.MM.dd HH:mm" />
+                        <%--<fmt:parseDate value="${meal.dateTime}" pattern="y-M-dd'T'H:m" var="parsedDate" />--%>
+                        <%--<fmt:formatDate value="${parsedDate}" pattern="yyyy.MM.dd HH:mm" />--%>
                         <%=TimeUtil.toString(meal.getDateTime())%>
                     </td>
                     <td>${meal.description}</td>
                     <td>${meal.calories}</td>
+                    <td><a href="meals?action=update&id=${meal.id}">Update</a></td>
+                    <td><a href="meals?action=delete&id=${meal.id}">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>
