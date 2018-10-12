@@ -40,8 +40,7 @@ public class MealServlet extends HttpServlet {
             response.sendRedirect("meals");
         } else {
             Meal mealEditing = repository.get(Integer.valueOf(id));
-            System.out.println(id);
-            System.out.println(mealEditing);
+
             if(request.getParameter("dateTime") != null) {
                 mealEditing.setDateTime(LocalDateTime.parse(request.getParameter("dateTime")));
             }
