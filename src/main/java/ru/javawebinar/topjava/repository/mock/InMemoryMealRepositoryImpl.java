@@ -20,7 +20,7 @@ import static ru.javawebinar.topjava.repository.mock.InMemoryUserRepositoryImpl.
 
 @Repository
 public class InMemoryMealRepositoryImpl implements MealRepository {
-    public static final Comparator<Meal> USER_MEAL_COMPARATOR = (meal1, meal2) -> meal2.getDateTime().compareTo(meal1.getDateTime());
+
     // Map  userId -> (mealId-> meal)
     private Map<Integer, Map<Integer,Meal>> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
